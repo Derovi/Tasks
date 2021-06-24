@@ -1,0 +1,32 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[left=2cm,right=2cm,
+top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage{cmap}					% поиск в PDF
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+
+\usepackage{xcolor}
+\usepackage{titlesec}
+\titleformat{\section}[block]{\Large\bfseries\filcenter}{}{1em}{}
+\titleformat{\subsection}[block]{\color{blue}\Medium\bfseries\filcenter}{}{1em}{}
+\usepackage{natbib}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{dsfont}
+\usepackage[russian]{babel}
+
+\begin{document}
+
+\section{Problem 63}
+
+Из условия, нам необходимо выбрать подооигртрезок игр $[a, b]$ максимальной длины такой, что для всех $t \in [a, b]$ верно, что $t_r >= e_l$, где $e \in [a, t)$, т.e. в любом отрезке читеров правая граница больше, чем максимум из левых границ в предыдущих отрезках.
+
+Таким образом, решение за квадрат выглядит так - перебираем $b$ - правую границу отрезка игр, затем перебираем $a$ от $b$ до 0, пока $a_r >= b_l$. Как только это условие не выполняется, найдет отрезок игр максимальной длины с правой границей в $b$. 
+
+Это решение можно улучшить, используя очередь на максимум. Будем перебирать $t$ - номер игры, добавлять в чередь $t_l$ и удалять из очереди элементы, пока максимум в очереди на станет $<= t_r$. Количество элементов в очереди после такой операции - максимальная длина отрезка игр с правой границей в $t$.
+
+Сложность такого решения $O(N)$, так как всего в очередь будет добавлено $N$ элементов, значит удалено не более $N$. В очереди на максимум операции добавления элемента, удаления элемента, поиска максимума работают за $O(1)$.
+
+\end{document}

@@ -1,0 +1,38 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[left=2cm,right=2cm,
+top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage{cmap}					% поиск в PDF
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+
+\usepackage{xcolor}
+\usepackage{titlesec}
+\titleformat{\section}[block]{\Large\bfseries\filcenter}{}{1em}{}
+\titleformat{\subsection}[block]{\color{blue}\Medium\bfseries\filcenter}{}{1em}{}
+\usepackage{natbib}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{dsfont}
+\usepackage[russian]{babel}
+
+\begin{document}
+
+\section{Problem 1}
+
+
+Будем считать, что у нас есть события двух видов:
+
+1) Деталь с номером $i$ поступила
+
+2)  Станок с номером $j$ освободился
+
+Будем поддерживать список свободных станков и деталей, которые уже поступили, но еще не отправлены на станок.
+
+После наступления каждого события будем брать деталь с максимальным временем доставки на склад и отправлять на любой из свободных станков, пока есть не распределенные детали или свободные станки.
+
+Таким образом, мы исключаем ситуацию, когда деталь, которая поступила подздно и имеет большое время доставки на склад, будет долго 
+ждать станка. Однако, может быть ситуация, в которой было бы разумнее задержать какую-то деталь из пришедших ранее, чтобы раньше отправить на станок деталь с большим временем доставки на склад, так что ответ может отличаться от оптимального, но не более, чем в два раза.
+
+\end{document}

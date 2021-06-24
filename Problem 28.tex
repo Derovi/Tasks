@@ -1,0 +1,32 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[left=2cm,right=2cm,
+top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage{cmap}					% поиск в PDF
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+
+\usepackage{xcolor}
+\usepackage{titlesec}
+\titleformat{\section}[block]{\Large\bfseries\filcenter}{}{1em}{}
+\titleformat{\subsection}[block]{\color{blue}\Medium\bfseries\filcenter}{}{1em}{}
+\usepackage{natbib}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{dsfont}
+\usepackage[russian]{babel}
+
+\begin{document}
+
+\section{Problem 28}
+
+Построим граф, в котором вершинами будет является пары $\{vertex, fuel\}$, где $vertex$ - номер города, а $fuel$ - количество топлива, с которым машина находится в этом городе. Вес ребра в этом графе будет количество денег, которые нужно потратить, чтобы перейти из одного состояния в другое. 
+
+Для каждой дороги из $a$ в $b$ ($a\ne b$) проведем ребра $\{\{a, fuel\}, \{b, fuel - len\}\}$, где $len$ - количество топлива, которое необходимо потратить на дорогу из $a$ в $b$, а $fuel$ - число от $len$ до $MAX\_FUEL$. Эти ребра описывают перемещения из одного города в другой без дозаправки, так что вес таких ребер будет $0$.
+
+Теперь проведем ребра $\{\{a, fuel\}, \{b, MAX\_FUEL\}\}$ из $a$ в $b$ ($a\ne b$), где $b$ - город с заправкой, а $fuel$ - число от $len$ до $\frac{MAX\_FUEL}{2}$. Эти ребра описсывают перемещения с дозаправкой, поэтому вес такого ребра - стоимость дозаправки в городе $b$.
+
+Теперь достаточно пусть Дейкстру по этому графу и найти минимальный ответ в вершинах с искомым (финишным) $vertex$.
+
+\end{document}
